@@ -8,27 +8,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BetterStudentManager {
+
     public List<Student> students = new ArrayList<>();
 
     public void addStudent(String name, double grade) {
         // This method should add a new student to the list of students
+        Student student = new Student();
+        student.name = name;
+        student.grade = grade;
+        students.add(student);
     }
 
     public void removeStudent(String name) {
         // This method should remove the student with the given name from the list of students
+        int indexToRemove = -1;
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).name.equals(name)) {
+                indexToRemove = i;
+            }
+            if (indexToRemove != -1) {
+                students.remove(indexToRemove);
+            }
+        }
     }
 
     public String getStudentList() {
-        // This method should return a string with each student's name and grade
-        // separated by a space, with each student separated by a newline character ('\n')
-        // E.g.
-        // John 90.9
-        // Jane 88.3
-        //
-        // You will need to use a String or StringBuilder to build the result by
-        // looping through the list of students
-        //
-        // Replace the following line with your implementation
-        return null;
+            //String getStudentList() {
+            // looping through the list of students
+            //
+            // Replace the following line with your implementation
+            String grades = "";
+            for (Student student : students) {
+                grades += student.name + " " + student.grade + "\n";
+            }
+            return grades;
+        }
     }
-}
